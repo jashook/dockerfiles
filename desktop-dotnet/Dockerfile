@@ -5,5 +5,5 @@ FROM microsoft/windowsservercore
 RUN mkdir C:\j
 
 # Set it as the working directory
-WORKDIR C:\j
+WORKDIR C:\\j
 

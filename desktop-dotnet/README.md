@@ -8,7 +8,7 @@ The desktop will need quite a bit of storage in order to correctly run. Follow t
 ```
 {
     "storage-opts": [
-        "size="120GB"
+        "size=120GB"
     ]
 }
 ```
