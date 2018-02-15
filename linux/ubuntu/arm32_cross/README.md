@@ -8,7 +8,7 @@ by mounting the cofreclr repository into the container at:
 
 **Note** that $WORKSPACE in this context is the location of the coreclr repo.
 
->docker run -i --rm -v $WORKSPACE:/home/dotnet-bot/coreclr -e ROOTFS_DIR=/home/dotnet-bot/rootfs/arm jashook/coreclr-arm-cross:latest ./coreclr/build.sh arm cros checked
+>docker run -i --rm -v $WORKSPACE:/home/dotnet-bot/coreclr -e ROOTFS_DIR=/home/dotnet-bot/rootfs/arm jashook/coreclr-arm-cross:latest ./coreclr/build.sh arm cross checked
 
 ## Image location
 
@@ -16,7 +16,7 @@ The latest build of this image can be pulled from dockerhub.
 
 >docker run -it jashook/coreclr-arm-cross:latest
 
-The source is available on github at https://www.github.com/jashook/dockerfiles
+The source is available on github at https://github.com/jashook/dockerfiles/tree/master/linux/ubuntu/arm32_cross
 
 ## Building
 
