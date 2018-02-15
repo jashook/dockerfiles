@@ -19,12 +19,8 @@ RUN apt-get update && \
         uuid-dev \
         libnuma-dev \
         libkrb5-dev \
-        qemu \
-        qemu-user-static \
         binfmt-support \
-        debootstrap \
         binutils-arm-linux-gnueabihf \
-        git
 
 # Create home directory
 RUN mkdir -p /home/dotnet-bot
