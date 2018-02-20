@@ -1,4 +1,4 @@
-FROM microsoft/windowsservercore
+FROM jashook/chocolatey:latest
 
 # Download useful tools to C:\tools
 ADD https://dist.nuget.org/win-x86-commandline/v4.1.0/nuget.exe C:\\tools\\nuget.exe
