@@ -6,9 +6,11 @@ RUN choco install python2 -y
 
 # Make the tools directory
 RUN mkdir C:\startup_tools
-RUN echo %SystemRoot%\sysWow64\cmd.exe /S /C "%1" > C:\startup_tools\run_command_cmd64.cmd
-RUN echo regsvr32.exe /S "%VSINSTALLDIR%\Common7\IDE\msdia120.dll" > C:\startup_tools\register_dia.cmd
+COPY run_command_cmd64.cmd C:\\startup_tools
+COPY register_dia.cmd C:\\startup_tools
+COPY kill_symbol_server.cmd C:\\startup_tools
+COPY setup.cmd C:\\startup_tools
 
 RUN set PATH=%PATH%;C:\python27;C:\python27\scripts;"C:\\Program Files\\CMake\\bin"
 
-ENTRYPOINT C:\BuildTools\Common7\Tools\VsDevCmd.bat &&
+ENTRYPOINT C:\BuildTools\Common7\Tools\VsDevCmd.bat && C:\startup_tools\setup.cmd && 
