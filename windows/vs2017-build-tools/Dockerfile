@@ -7,12 +7,22 @@ ADD https://dist.nuget.org/win-x86-commandline/v4.1.0/nuget.exe C:\\tools\\nuget
 ADD https://aka.ms/vs/15/release/vs_buildtools.exe C:\\TEMP\\vs_buildtools.exe
 
 RUN C:\\TEMP\\vs_buildtools.exe --wait --quiet --norestart --nocache --installPath C:\BuildTools \
+    --add Microsoft.VisualStudio.Component.CoreBuildTools \
+    --add Microsoft.VisualStudio.Component.VC.CoreBuildTools \
+    --add Microsoft.VisualStudio.Component.Windows10SDK \
+    --add Microsoft.VisualStudio.Component.VC.Redist.14.Latest \
+    --add Microsoft.VisualStudio.Component.Static.Analysis.Tools \
+    --add Microsoft.VisualStudio.Component.VC.CMake.Project \
+    --add Microsoft.Component.VC.Runtime.UCRTSDK \
+    --add Microsoft.VisualStudio.Component.VC.140 \
     --add Microsoft.Component.MSBuild \
     --add Microsoft.VisualStudio.Component.Roslyn.Compiler \
     --add Microsoft.VisualStudio.Component.Roslyn.LanguageServices \
     --add Microsoft.VisualStudio.Component.VC.CLI.Support \
     --add Microsoft.VisualStudio.Component.VC.Tools.ARM \
     --add Microsoft.VisualStudio.Component.VC.Tools.ARM64 \
+    --add Microsoft.VisualStudio.Component.Windows10SDK.10586 \
+    --add Microsoft.VisualStudio.Component.Windows81SDK \
     --add Microsoft.VisualStudio.Component.Windows10SDK.14393 \
     --add Microsoft.VisualStudio.Component.Windows10SDK.16299.Desktop \
     --add Microsoft.VisualStudio.Component.Windows10SDK.16299.Desktop.arm\
