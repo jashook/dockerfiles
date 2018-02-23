@@ -40,8 +40,11 @@ ADD https://aka.ms/vs/15/release/vs_buildtools.exe C:\\TEMP\\vs_buildtools.exe
 #
 # .Net
 #
-# Microsoft.Net.Component.4.6.SDK:                                  .NET Framework 4.6.1 SDK
-# Microsoft.Net.Component.4.6.TargetingPack:                        .NET Framework 4.6.1 targeting pack
+# Microsoft.Net.Component.4.5.TargetingPack:                        .NET Framework 4.5 targeting pack
+# Microsoft.VisualStudio.Component.PortableLibrary:                 .NET Portable Library targeting pack
+#
+# Microsoft.Net.Component.4.6.SDK:                                  .NET Framework 4.6 SDK
+# Microsoft.Net.Component.4.6.TargetingPack:                        .NET Framework 4.6 targeting pack
 # Microsoft.Net.ComponentGroup.TargetingPacks.Common:               .NET Framework 4 – 4.6 development tools
 #
 # VC++ 2015
@@ -80,6 +83,8 @@ RUN C:\\TEMP\\vs_buildtools.exe --wait --quiet --norestart --nocache --installPa
 ####
 #   .Net
 ####
+    --add Microsoft.Net.Component.4.5.TargetingPack \
+    --add Microsoft.VisualStudio.Component.PortableLibrary \
     --add Microsoft.Net.Component.4.6.SDK \
     --add Microsoft.Net.Component.4.6.TargetingPack \
     --add Microsoft.Net.ComponentGroup.TargetingPacks.Common \
