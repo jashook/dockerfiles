@@ -6,6 +6,13 @@ ADD https://dist.nuget.org/win-x86-commandline/v4.1.0/nuget.exe C:\\tools\\nuget
 # Download the Build Tools bootstrapper outside of the PATH.
 ADD https://aka.ms/vs/15/release/vs_buildtools.exe C:\\TEMP\\vs_buildtools.exe
 
+################################################################################
+# Component IDs:
+# Please see https://docs.microsoft.com/en-us/visualstudio/install/workload-component-id-vs-build-tools for more information
+# on component IDs if there are any that need to be modified or added.
+#
+################################################################################
+#
 # MS Build Tools
 #
 # Microsoft.Component.MSBuild:                              MSBuild
@@ -31,10 +38,11 @@ ADD https://aka.ms/vs/15/release/vs_buildtools.exe C:\\TEMP\\vs_buildtools.exe
 # Microsoft.VisualStudio.Component.VC.Tools.ARM:                    Visual C++ compilers and libraries for ARM
 # Microsoft.VisualStudio.Component.VC.Tools.ARM64:                  Visual C++ compilers and libraries for ARM64
 #
-# .Net 4.6
+# .Net
 #
-# Microsoft.Net.Component.4.6.1.SDK:                                .NET Framework 4.6.1 SDK
-# Microsoft.Net.Component.4.6.1.TargetingPack:                      .NET Framework 4.6.1 targeting pack
+# Microsoft.Net.Component.4.6.SDK:                                  .NET Framework 4.6.1 SDK
+# Microsoft.Net.Component.4.6.TargetingPack:                        .NET Framework 4.6.1 targeting pack
+# Microsoft.Net.ComponentGroup.TargetingPacks.Common:               .NET Framework 4 – 4.6 development tools
 #
 # VC++ 2015
 #
@@ -70,10 +78,11 @@ RUN C:\\TEMP\\vs_buildtools.exe --wait --quiet --norestart --nocache --installPa
     --add Microsoft.VisualStudio.ComponentGroup.NativeDesktop.Win81 \
 ####
 ####
-#   .Net 4.6
+#   .Net
 ####
-    --add Microsoft.Net.Component.4.6.1.SDK \
-    --add Microsoft.Net.Component.4.6.1.TargetingPack \
+    --add Microsoft.Net.Component.4.6.SDK \
+    --add Microsoft.Net.Component.4.6.TargetingPack \
+    --add Microsoft.Net.ComponentGroup.TargetingPacks.Common \
 ####
 #   VC++ 2015
 #
