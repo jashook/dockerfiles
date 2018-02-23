@@ -1,4 +1,4 @@
-FROM jashook/vs2017-build-tools:testing-46
+FROM jashook/vs2017-build-tools:latest
 
 # Install coreclr dependencies
 RUN choco install cmake -y
