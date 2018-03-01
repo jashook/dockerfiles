@@ -1,11 +1,9 @@
-FROM jashook/vs2017-build-tools:testing-46
+FROM jashook/vs2017-build-tools-enterprise:latest
 
 # Install coreclr dependencies
 RUN choco install cmake -y
 RUN choco install python2 -y
 RUN choco install git -y
-
-RUN set PATH=%PATH%;C:\python27;C:\python27\scripts;"C:\\Program Files\\CMake\\bin"
 
 # Make the tools directory
 RUN mkdir C:\startup_tools
@@ -19,4 +17,7 @@ RUN C:\startup_tools\setup.cmd
 # Make sure dia is registered correctly.
 RUN C:\startup_tools\check_dia_register.cmd
 
-ENTRYPOINT C:\BuildTools\VC\Auxiliary\Build\vcvars64.bat && 
+# Setup the path
+COPY setup_path.cmd C:\\startup_tools
+
+ENTRYPOINT C:\BuildTools\VC\Auxiliary\Build\vcvars64.bat && C:\startup_tools\setup_path.cmd && 
