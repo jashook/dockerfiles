@@ -1,4 +1,4 @@
-FROM ubuntu:16.04
+FROM jashook/coreclr-arm-cross
 
 # Install coreclr dependencies
 RUN apt-get update && \
@@ -19,16 +19,15 @@ RUN apt-get update && \
         uuid-dev \
         libnuma-dev \
         libkrb5-dev \
-        binfmt-support \
-        binutils-arm-linux-gnueabihf
+        binfmt-support
 
 # Create home directory
 RUN mkdir -p /home/dotnet-bot/rootfs
 
 # Populate the directory with the rootfs.
-ADD https://clrjit.blob.core.windows.net/docker/arm.tar.gz /home/dotnet-bot/rootfs
+ADD https://clrjit.blob.core.windows.net/docker/x86_rootfs.tar.gz /home/dotnet-bot/rootfs
 
-RUN tar xzvf /home/dotnet-bot/rootfs/arm.tar.gz -C /home/dotnet-bot/rootfs
+RUN tar xzvf /home/dotnet-bot/rootfs/x86_rootfs.tar.gz -C /home/dotnet-bot/rootfs
 
 # Setup mount point for coreclr
 RUN mkdir -p /home/dotnet-bot/coreclr
