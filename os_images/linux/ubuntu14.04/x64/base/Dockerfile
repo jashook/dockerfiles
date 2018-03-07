@@ -1,13 +1,7 @@
-FROM i386/ubuntu:16.04
+FROM ubuntu:14.04
 
 # Setup the home directory
 RUN mkdir -p /home/dotnet-bot
-
-# Set up the dotnet-bot user
-RUN groupadd dotnet-bot && useradd -d /home/dotnet-bot -g dotnet-bot -M -s /bin/bash dotnet-bot
-
-# Set up permissions
-RUN chown -R dotnet-bot:dotnet-bot /home/dotnet-bot
 
 # Setup mount point for coreclr
 RUN mkdir -p /home/dotnet-bot/coreclr
@@ -33,9 +27,5 @@ RUN apt-get update && \
         binfmt-support \
     && apt-get clean
 
-
-USER dotnet-bot
-
 WORKDIR /home/dotnet-bot
 CMD bash
-
