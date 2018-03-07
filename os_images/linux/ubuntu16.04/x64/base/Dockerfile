@@ -1,8 +1,13 @@
 FROM ubuntu:16.04
 
-# Install coreclr dependencies
+# Setup the home directory
+RUN mkdir -p /home/dotnet-bot
+
+# Setup mount point for coreclr
+RUN mkdir -p /home/dotnet-bot/coreclr
+
+# Include all of the usual coreclr dependencies
 RUN apt-get update && \
-    apt-get install -y apt-utils && \
     apt-get install -y \
         cmake \
         llvm-3.9 \
@@ -20,18 +25,7 @@ RUN apt-get update && \
         libnuma-dev \
         libkrb5-dev \
         binfmt-support \
-        binutils-arm-linux-gnueabihf
-
-# Create home directory
-RUN mkdir -p /home/dotnet-bot/rootfs
-
-# Populate the directory with the rootfs.
-ADD https://clrjit.blob.core.windows.net/docker/arm.tar.gz /home/dotnet-bot/rootfs
-
-RUN tar xzvf /home/dotnet-bot/rootfs/arm.tar.gz -C /home/dotnet-bot/rootfs
-
-# Setup mount point for coreclr
-RUN mkdir -p /home/dotnet-bot/coreclr
+    && apt-get clean
 
 WORKDIR /home/dotnet-bot
 CMD bash

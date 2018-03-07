@@ -27,7 +27,5 @@ RUN apt-get update && \
         binfmt-support \
     && apt-get clean
 
-
 WORKDIR /home/dotnet-bot
 CMD bash
-
