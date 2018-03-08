@@ -1,4 +1,4 @@
-FROM i386/ubuntu:14.04
+FROM i686/ubuntu:14.04
 
 # Install coreclr dependencies
 RUN apt-get update && \
@@ -35,3 +35,5 @@ RUN mkdir -p /home/dotnet-bot/coreclr
 
 WORKDIR /home/dotnet-bot
 CMD bash
+
+ENTRYPOINT [ "/usr/bin/linux32", "--" ]

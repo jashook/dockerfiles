@@ -1,4 +1,4 @@
-FROM i386/ubuntu:14.04
+FROM i686/ubuntu:14.04
 
 # Setup the home directory
 RUN mkdir -p /home/dotnet-bot
@@ -29,3 +29,5 @@ RUN apt-get update && \
 
 WORKDIR /home/dotnet-bot
 CMD bash
+
+ENTRYPOINT [ "/usr/bin/linux32", "--" ]
