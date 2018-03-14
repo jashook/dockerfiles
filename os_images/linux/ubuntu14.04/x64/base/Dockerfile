@@ -10,6 +10,7 @@ RUN mkdir -p /home/dotnet-bot/coreclr
 RUN apt-get update && \
     apt-get install -y \
         cmake \
+        git \
         llvm-3.9 \
         clang-3.9 \
         lldb-3.9 \
