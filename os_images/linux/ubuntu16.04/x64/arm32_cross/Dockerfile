@@ -1,4 +1,4 @@
-FROM ubuntu:16.04
+FROM jashook/ubuntu-16.04-aarc64
 
 # Install coreclr dependencies
 RUN apt-get update && \
