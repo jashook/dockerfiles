@@ -60,23 +60,11 @@ ADD https://aka.ms/vs/15/release/vs_Enterprise.exe C:\\TEMP\\vs_Enterprise.exe
 
 RUN C:\\TEMP\\vs_Enterprise.exe --wait --quiet --norestart --nocache --installPath C:\BuildTools \
 ####
-#    MSBuild Components
-####
-    --add Microsoft.Component.MSBuild \
-    --add Microsoft.VisualStudio.Component.CoreBuildTools \
-    --add Microsoft.VisualStudio.Component.Roslyn.Compiler \
-    --add Microsoft.VisualStudio.Component.Roslyn.LanguageServices \
-    || IF "%ERRORLEVEL%"=="3010" EXIT 0
-
-RUN C:\\TEMP\\vs_Enterprise.exe modify --wait --quiet --norestart --nocache --installPath C:\BuildTools \
-####
 #   VC++ Components
 ####
     --add Microsoft.VisualStudio.Component.VC.CoreBuildTools \
     --add Microsoft.VisualStudio.Component.VC.Redist.14.Latest \
     --add Microsoft.VisualStudio.Component.Windows10SDK \
-    --add Microsoft.VisualStudio.Component.Static.Analysis.Tools \
-    --add Microsoft.VisualStudio.Component.VC.CMake.Project \
     --add Microsoft.VisualStudio.Component.VC.Tools.x86.x64 \
     || IF "%ERRORLEVEL%"=="3010" EXIT 0
 
@@ -85,7 +73,6 @@ RUN C:\\TEMP\\vs_Enterprise.exe modify --wait --quiet --norestart --nocache --in
 #   UCRT
 ####
     --add Microsoft.Component.VC.Runtime.UCRTSDK \
-    --add Microsoft.VisualStudio.ComponentGroup.NativeDesktop.Win81 \
 ####
     || IF "%ERRORLEVEL%"=="3010" EXIT 0
 
@@ -95,32 +82,7 @@ RUN C:\\TEMP\\vs_Enterprise.exe modify --wait --quiet --norestart --nocache --in
 ####
     --add Microsoft.VisualStudio.Component.VSSDK \
     --add Microsoft.Net.Core.Component.SDK \
-    --add Microsoft.NetCore.ComponentGroup.Web \
     --add Microsoft.NetCore.ComponentGroup.DevelopmentTools \
-    --add Microsoft.Component.NetFX.Core.Runtime \
-    --add Microsoft.Net.Component.4.5.TargetingPack \
-    --add Microsoft.Net.Component.4.5.1.TargetingPack \
-    --add Microsoft.Net.Component.4.5.2.TargetingPack \
-    --add Microsoft.VisualStudio.Component.PortableLibrary \
-    --add Microsoft.Net.Component.4.6.SDK \
-    --add Microsoft.Net.Component.4.6.TargetingPack \
-    --add Microsoft.Net.Component.4.6.2.SDK \
-    --add Microsoft.Net.ComponentGroup.TargetingPacks.Common \
-    --add Microsoft.Net.Component.4.6.1.TargetingPack \
-    --add Microsoft.Net.Component.4.6.2.TargetingPack \
-    --add Microsoft.VisualStudio.Component.VC.Tools.14.11 \
-    || IF "%ERRORLEVEL%"=="3010" EXIT 0
-
-RUN C:\\TEMP\\vs_Enterprise.exe modify --wait --quiet --norestart --nocache --installPath C:\BuildTools \
-####
-#   VC++ 2015
-#
-# Notes:
-#
-# msdia120.dll is required for building coreclr.
-#
-####
-    --add Microsoft.VisualStudio.Component.VC.140 \
     --add Microsoft.VisualStudio.Component.VC.Tools.14.11 \
     || IF "%ERRORLEVEL%"=="3010" EXIT 0
 
@@ -142,14 +104,6 @@ RUN C:\\TEMP\\vs_Enterprise.exe modify --wait --quiet --norestart --nocache --in
     --add Microsoft.VisualStudio.Component.Windows10SDK.16299.Desktop.arm \
     || IF "%ERRORLEVEL%"=="3010" EXIT 0
 
-RUN C:\\TEMP\\vs_Enterprise.exe modify --wait --quiet --norestart --nocache --installPath C:\BuildTools \
-####
-#   Windows SDK
-####
-    --add Microsoft.Net.Component.4.TargetingPack \
-    --add Microsoft.Net.ComponentGroup.DevelopmentPrerequisites \
-    --add Microsoft.Net.ComponentGroup.TargetingPacks.Common \
-    || IF "%ERRORLEVEL%"=="3010" EXIT 0
 
 # Start developer command prompt with any other commands specified.
 ENTRYPOINT C:\BuildTools\Common7\Tools\VsDevCmd.bat &&
